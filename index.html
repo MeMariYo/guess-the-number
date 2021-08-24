@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 </head>
 <body>
-	<script>
+	
+    
+    <script>
         let num = Math.floor(Math.random() * 100);
         
-        let guess = prompt("guess a number between 1 and 100");
+        
+        
+        function guessfn(prev){
+            let text = "guess a number between 1 and 100";
+                if(prev >0){
+                    text = text + " (previous guess: " + prev + ")";
+                }
+           
+            let guess = prompt(text);
         
        
-            guess.textContent = 'Previous guesses: ';
+            guess.textContent = 'Previous guesses: ' + prev;
             
             if(num == guess){
                 alert("Got it!");
+                return;
             
             }else if(num > guess){ 
                 alert("lower!");
@@ -23,8 +35,13 @@
             }else{
                 alert("Sorry!  You guessed " + guess + " and the number was " + num);
             }
+            
+            guessfn(guess);
 
+        }   
        
+      guessfn(0);
+
         
 
 
